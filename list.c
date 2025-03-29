@@ -118,9 +118,8 @@ void * popCurrent(List * list) {
 
     void* eliminarData= malloc(sizeof(int));
     if(!eliminarData) return NULL;
-
+    
     *(int *)eliminarData = *(int*)temp->data;
-
 
     if(list->current == list->head){
         list->head = list->head->next;}
@@ -128,10 +127,13 @@ void * popCurrent(List * list) {
 
         if(list->current == list->tail) list->tail=NULL;
     else{
-        Node* prev = list->head;
-        while(prev->next != list->current) prev = prev->next;
-        prev->next = list->current->next;
-        if(list->current == list->tail) list->tail = prev;
+        Node* prev = list->current->prev;
+        prev->next= list->current->next;
+        if(list->current->next){
+            list->current->next->prev = prev;
+        }else{
+            list->tail = prev;
+        }
     }
     list->current = list->current->next;
     free(temp);
