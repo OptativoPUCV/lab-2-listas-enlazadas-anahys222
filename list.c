@@ -88,8 +88,8 @@ void pushBack(List * list, void * data) {
 void pushCurrent(List * list, void * data) {
     if(!list || !list->current ) return NULL;
     Node* temp = list->current;
-    void* data= malloc(sizeof(int));
-    
+    void* data= malloc(sizeof(void));
+
     if(!data) return NULL;
     *(int *)data = temp->data;
 
