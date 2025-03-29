@@ -108,9 +108,11 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
     if(!list || !list->current ) return NULL;
     Node* temp = list->current;
-    void* data= malloc(sizeof(int));
-    if(!data) return NULL;
-    *(int *)data = temp->data;
+
+    int* eliminarData= (int *)malloc(sizeof(int));
+    if(!eliminarData) return NULL;
+    *eliminarData = temp->data;
+
 
     if(list->current == list->head){
         list->head = list->head->next;
@@ -123,8 +125,7 @@ void * popCurrent(List * list) {
     }
     list->current = list->current->next;
     free(temp);
-    return data;
-    return NULL;
+    return eliminarData;
 }
 
 void cleanList(List * list) {

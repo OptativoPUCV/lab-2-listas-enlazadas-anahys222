@@ -196,3 +196,14 @@ list.c:113:18: error: assignment makes integer from pointer without a cast [-Wer
 cc1.exe: all warnings being treated as errors
 Compilation failed
 3bec222
+vi., 28 de mar. de 2025 22:07:49: 
+ list.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+In file included from test.c:5:0:
+list.c: In function 'popCurrent':
+list.c:114:19: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+     *eliminarData = temp->data;
+                   ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+ef82cbe
