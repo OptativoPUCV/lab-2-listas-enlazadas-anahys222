@@ -86,7 +86,26 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
+    if(!list || !list->current ) return NULL;
+    Node* temp = list->current;
+    void* data= malloc(sizeof(int));
+    if(!data) return NULL;
+    *(int *)data = temp->data;
+
+    if(list->current == list->head){
+        list->head = list->head->next;
+        if(list->current == list->tail) list->tail==NULL;
+    }else{
+        Node* prev = list->head;
+        while(prev->next != list->current) prev = prev->next;
+        prev->next = list->current->next;
+        if(list->current == list->tail) list->tail = prev;
+    }
+    list->current = list->current->next;
+    free(temp);
+    return data;
 }
+
 
 void * popFront(List * list) {
     list->current = list->head;
