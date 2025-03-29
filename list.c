@@ -109,9 +109,10 @@ void * popCurrent(List * list) {
     if(!list || !list->current ) return NULL;
     Node* temp = list->current;
 
-    int* eliminarData= (int *)malloc(sizeof(int));
+    void* eliminarData= malloc(sizeof(int));
     if(!eliminarData) return NULL;
-    *eliminarData = temp->data;
+
+    *(int *)eliminarData = *(int*)temp->data;
 
 
     if(list->current == list->head){
