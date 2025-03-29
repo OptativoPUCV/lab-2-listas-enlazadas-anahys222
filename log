@@ -185,3 +185,14 @@ list.c:88:6: note: declared here
 cc1.exe: all warnings being treated as errors
 Compilation failed
 6b04fc6
+vi., 28 de mar. de 2025 22:02:32: 
+ list.c | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+In file included from test.c:5:0:
+list.c: In function 'popCurrent':
+list.c:113:18: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+     *(int *)data = temp->data;
+                  ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+3bec222

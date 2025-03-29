@@ -86,25 +86,12 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
-    if(!list || !list->current ) return NULL;
-    Node* temp = list->current;
-    void* data= malloc(sizeof(int));
-
-    if(!data) return NULL;
-    *(int *)data = temp->data;
-
-    if(list->current == list->head){
-        list->head = list->head->next;
-        if(list->current == list->tail) list->tail = NULL;
-    }else{
-        Node* prev = list->head;
-        while(prev->next != list->current) prev = prev->next;
-        prev->next = list->current->next;
-        if(list->current == list->tail) list->tail = prev;
-    }
-    list->current = list->current->next;
-    free(temp);
-    return data;
+    if (!list || !list->current) return;
+    Node* nuevoNodo = createNode(data);
+    if (!nuevoNodo) return;
+    nuevoNodo->next = list->current->next;
+    list->current->next = nuevoNodo;
+    if (list->current == list->tail) list->tail = nuevoNodo;
 }
 
 
@@ -119,6 +106,24 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
+    if(!list || !list->current ) return NULL;
+    Node* temp = list->current;
+    void* data= malloc(sizeof(int));
+    if(!data) return NULL;
+    *(int *)data = temp->data;
+
+    if(list->current == list->head){
+        list->head = list->head->next;
+        if(list->current == list->tail) list->tail=NULL;
+    }else{
+        Node* prev = list->head;
+        while(prev->next != list->current) prev = prev->next;
+        prev->next = list->current->next;
+        if(list->current == list->tail) list->tail = prev;
+    }
+    list->current = list->current->next;
+    free(temp);
+    return data;
     return NULL;
 }
 
