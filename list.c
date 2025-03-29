@@ -118,15 +118,17 @@ void * popCurrent(List * list) {
 
     void* eliminarData= malloc(sizeof(int));
     if(!eliminarData) return NULL;
-    
+
     *(int *)eliminarData = *(int*)temp->data;
 
     if(list->current == list->head){
-        list->head = list->head->next;}
-        if(list->head) list->head->prev = NULL;
-
-        if(list->current == list->tail) list->tail=NULL;
-    else{
+        list->head = list->head->next;
+        if(list->head){
+            list->head->prev = NULL;
+        }else{
+            list->tail= NULL;
+        }
+    }else{
         Node* prev = list->current->prev;
         prev->next= list->current->next;
         if(list->current->next){
