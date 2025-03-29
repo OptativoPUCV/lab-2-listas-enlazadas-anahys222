@@ -80,3 +80,38 @@ list.c:88:6: note: declared here
 cc1.exe: all warnings being treated as errors
 Compilation failed
 a2b2888
+vi., 28 de mar. de 2025 21:51:59: 
+ list.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:0:
+list.c: In function 'pushCurrent':
+list.c:89:41: error: 'return' with a value, in function returning void [-Werror]
+     if(!list || !list->current ) return NULL;
+                                         ^~~~
+list.c:88:6: note: declared here
+ void pushCurrent(List * list, void * data) {
+      ^~~~~~~~~~~
+list.c:91:11: error: 'data' redeclared as different kind of symbol
+     void* data= malloc(sizeof(int));
+           ^~~~
+list.c:88:38: note: previous definition of 'data' was here
+ void pushCurrent(List * list, void * data) {
+                                      ^~~~
+list.c:93:22: error: 'return' with a value, in function returning void [-Werror]
+     if(!data) return NULL;
+                      ^~~~
+list.c:88:6: note: declared here
+ void pushCurrent(List * list, void * data) {
+      ^~~~~~~~~~~
+list.c:94:18: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+     *(int *)data = temp->data;
+                  ^
+list.c:107:12: error: 'return' with a value, in function returning void [-Werror]
+     return data;
+            ^~~~
+list.c:88:6: note: declared here
+ void pushCurrent(List * list, void * data) {
+      ^~~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+21e7dd8
